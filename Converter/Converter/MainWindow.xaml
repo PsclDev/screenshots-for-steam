@@ -14,7 +14,7 @@
         </Style>
     </Window.Resources>
     <StackPanel Background="#212121">
-        <Grid Height="50" VerticalAlignment="Top">
+        <Grid Height="50" VerticalAlignment="Top" Background="Transparent" MouseDown="Grid_MouseDown">
             <TextBlock Text="Image Converter for Steam" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0 7 0 0"/>
             <Button x:Name="BtnPowerOff" Width="40" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" VerticalAlignment="Top" Margin="0 7 0 0" Click="BtnPowerOff_Click">
                 <materialDesign:PackIcon Kind="Power" Foreground="Red" Width="40" Height="25"/>
@@ -22,7 +22,7 @@
         </Grid>
         <StackPanel Height="210" VerticalAlignment="Top">
             <StackPanel Margin="50 15 50 0">
-                <TextBlock Text="All images from this path will be converted" FontSize="13"/>
+                <TextBlock Text="All images from this path will be converted" FontSize="13" Margin="0 0 0 3"/>
                 <StackPanel Orientation="Horizontal" Height="50">
                     <Button x:Name="BtnImportPath" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Click="BtnImportPath_Click">
                         <materialDesign:PackIcon Kind="FolderOpen" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
@@ -31,7 +31,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="50 15 50 0">
-                <TextBlock Text="Steam Game Path" FontSize="13"/>
+                <TextBlock Text="Steam Game Path" FontSize="13" Margin="0 0 0 3"/>
                 <StackPanel Orientation="Horizontal" Height="50">
                     <Button x:Name="BtnSteamPath" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Click="BtnSteamPath_Click">
                         <materialDesign:PackIcon Kind="FolderOpen" Foreground="{DynamicResource PrimaryHueMidBrush}"/>

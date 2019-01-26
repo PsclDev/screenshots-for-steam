@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BespokeFusion;
+using System;
 using System.Windows;
 
 namespace Converter
@@ -12,6 +13,11 @@ namespace Converter
         {
             InitializeComponent();
         }
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
         private void BtnPowerOff_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -45,8 +51,18 @@ namespace Converter
             string ImpPath = TxtBxImportPath.Text;
             string SteamPath = TxtBxSteamPath.Text;
             bool deleteFiles = Convert.ToBoolean(TglBtnDelteFiles.IsChecked);
-            Functions.SortScreenshots(ImpPath);
-            Functions.ConvertAndExport(SteamPath, deleteFiles);
+
+            if (ImpPath != "" && SteamPath != "")
+            {
+                Functions.SortScreenshots(ImpPath);
+                Functions.ConvertAndExport(SteamPath, deleteFiles);
+            }
+            else if(ImpPath == "" && SteamPath != "")
+                MaterialMessageBox.Show("You need to Fill out import Field", "Empty Field");
+            else if (SteamPath == "" && ImpPath != "")
+                MaterialMessageBox.Show("You need to Fill out steam Field", "Empty Field");
+            else if (ImpPath == "" && SteamPath == "")
+                MaterialMessageBox.Show("Both Fields must be filled ", "Empty Fields");
         }
     }
 }
