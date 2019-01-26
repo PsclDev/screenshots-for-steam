@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Converter
 {
@@ -43,9 +44,9 @@ namespace Converter
         {
             string ImpPath = TxtBxImportPath.Text;
             string SteamPath = TxtBxSteamPath.Text;
-
+            bool deleteFiles = Convert.ToBoolean(TglBtnDelteFiles.IsChecked);
             Functions.SortScreenshots(ImpPath);
-            Functions.ConvertAndExport(SteamPath);
+            Functions.ConvertAndExport(SteamPath, deleteFiles);
         }
     }
 }

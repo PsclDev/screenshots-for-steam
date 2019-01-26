@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Converter"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="300" Width="950" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="330" Width="950" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Raleway"/>
@@ -20,7 +20,7 @@
                 <materialDesign:PackIcon Kind="Power" Foreground="Red" Width="40" Height="25"/>
             </Button>
         </Grid>
-        <StackPanel Height="165" VerticalAlignment="Top">
+        <StackPanel Height="210" VerticalAlignment="Top">
             <StackPanel Margin="50 15 50 0">
                 <TextBlock Text="All images from this path will be converted" FontSize="13"/>
                 <StackPanel Orientation="Horizontal" Height="50">
@@ -38,6 +38,10 @@
                     </Button>
                     <TextBox x:Name="TxtBxSteamPath" materialDesign:HintAssist.Hint="e.g. Steam\userdata\[USER_ID]\760\remote\[GAME_ID]\screenshots" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="White" FontFamily="MarketSans" VerticalAlignment="Center" Margin="0 0 0 8" Width="800"/>
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="50 5 50 0">
+                <TextBlock Text="Should the files be deleted after conversion?" FontSize="13"/>
+                <ToggleButton x:Name="TglBtnDelteFiles" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" IsChecked="False"  HorizontalAlignment="Left" Margin="0 5 0 0"/>
             </StackPanel>
         </StackPanel>
         <Grid Margin="0 15 0 0">

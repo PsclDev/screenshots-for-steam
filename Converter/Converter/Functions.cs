@@ -41,7 +41,7 @@ namespace Converter
                 MaterialMessageBox.Show(ex.ToString(), "ERROR OCCURED");
             }
         }
-        public static void ConvertAndExport(string SteamPath)
+        public static void ConvertAndExport(string SteamPath, bool deleteFiles)
         {
             try
             {
@@ -65,7 +65,8 @@ namespace Converter
 
                     ConvertedFiles++;
 
-                    File.Delete(file);
+                    if (deleteFiles == true)
+                        File.Delete(file);
                 }
             }
             catch (Exception ex)
