@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Converter
 {
@@ -23,6 +10,42 @@ namespace Converter
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void BtnPowerOff_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BtnImportPath_Click(object sender, RoutedEventArgs e)
+        {
+            TxtBxImportPath.Text = GetPath();
+        }
+
+        private void BtnSteamPath_Click(object sender, RoutedEventArgs e)
+        {
+            TxtBxSteamPath.Text = GetPath();
+        }
+
+        private string GetPath()
+        {
+            var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string path = dialog.SelectedPath;
+
+                return path;
+            }
+
+            return "";
+        }
+
+        private void BtnConvert_Click(object sender, RoutedEventArgs e)
+        {
+            string ImpPath = TxtBxImportPath.Text;
+            string SteamPath = TxtBxSteamPath.Text;
+
+            Functions.SortScreenshots(ImpPath);
+            Functions.ConvertAndExport(SteamPath);
         }
     }
 }
