@@ -102,5 +102,10 @@ namespace Converter
             Properties.Settings.Default.RestartSteam = Convert.ToBoolean(TglBtnRestartSteam.IsChecked);
             Properties.Settings.Default.DeleteFiles = Convert.ToBoolean(TglBtnDelteFiles.IsChecked);
         }
+
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MaterialMessageBox.Show("Application Icon by http://froyoshark.deviantart.com/", "Icon Copyright");
+        }
     }
 }
