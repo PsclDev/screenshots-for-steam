@@ -1,5 +1,8 @@
 ﻿using BespokeFusion;
 using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace Converter
@@ -12,7 +15,17 @@ namespace Converter
         public MainWindow()
         {
             InitializeComponent();
+            LoadSettings();
         }
+
+        private void LoadSettings()
+        {
+            TxtBxImportPath.Text = Properties.Settings.Default.ImportPath;
+            TxtBxSteamPath.Text = Properties.Settings.Default.SteamPath;
+            TglBtnRestartSteam.IsChecked = Properties.Settings.Default.RestartSteam;
+            TglBtnDelteFiles.IsChecked = Properties.Settings.Default.DeleteFiles;
+        }
+
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -42,8 +55,20 @@ namespace Converter
 
                 return path;
             }
-
             return "";
+        }
+
+        private void RestartSteam()
+        {
+            var process = Process.GetProcessesByName("Steam")[0];
+            process.Kill();
+
+            string path = TxtBxSteamPath.Text;
+            string[] extract = Regex.Split(path, "userdata");
+            string main = extract[0].TrimEnd('\\');
+
+            string steam = Path.Combine(main + "\\Steam.exe");
+            Process.Start(steam);
         }
 
         private void BtnConvert_Click(object sender, RoutedEventArgs e)
@@ -63,6 +88,19 @@ namespace Converter
                 MaterialMessageBox.Show("You need to Fill out steam Field", "Empty Field");
             else if (ImpPath == "" && SteamPath == "")
                 MaterialMessageBox.Show("Both Fields must be filled ", "Empty Fields");
+
+            if (TglBtnRestartSteam.IsChecked == true)
+                RestartSteam();
+            else
+                MaterialMessageBox.Show("You need to restart your Steam client to upload screenshots", "Info");
+        }
+
+        private void BtnSaveSettings_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.ImportPath = TxtBxImportPath.Text;
+            Properties.Settings.Default.SteamPath = TxtBxSteamPath.Text;
+            Properties.Settings.Default.RestartSteam = Convert.ToBoolean(TglBtnRestartSteam.IsChecked);
+            Properties.Settings.Default.DeleteFiles = Convert.ToBoolean(TglBtnDelteFiles.IsChecked);
         }
     }
 }

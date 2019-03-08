@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Converter"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="330" Width="950" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="380" Width="950" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Raleway"/>
@@ -20,7 +20,7 @@
                 <materialDesign:PackIcon Kind="Power" Foreground="Red" Width="40" Height="25"/>
             </Button>
         </Grid>
-        <StackPanel Height="210" VerticalAlignment="Top">
+        <StackPanel Height="260" VerticalAlignment="Top">
             <StackPanel Margin="50 15 50 0">
                 <TextBlock Text="All images from this path will be converted" FontSize="13" Margin="0 0 0 3"/>
                 <StackPanel Orientation="Horizontal" Height="50">
@@ -40,12 +40,17 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="50 5 50 0">
+                <TextBlock Text="Should we restart steam after conversion?" FontSize="13"/>
+                <ToggleButton x:Name="TglBtnRestartSteam" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" IsChecked="False"  HorizontalAlignment="Left" Margin="0 5 0 0"/>
+            </StackPanel>
+            <StackPanel Margin="50 10 50 0">
                 <TextBlock Text="Should the files be deleted after conversion?" FontSize="13"/>
                 <ToggleButton x:Name="TglBtnDelteFiles" Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" IsChecked="False"  HorizontalAlignment="Left" Margin="0 5 0 0"/>
             </StackPanel>
         </StackPanel>
         <Grid Margin="0 15 0 0">
             <Button x:Name="BtnConvert" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="250" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Convert" Click="BtnConvert_Click"/>
+            <Button x:Name="BtnSaveSettings" Style="{StaticResource MaterialDesignRaisedDarkButton}" HorizontalAlignment="Right" Width="120" Height="20" Margin="0 0 10 0" Padding="0" FontSize="10" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="Save Options" Click="BtnSaveSettings_Click"/>
         </Grid>
     </StackPanel>
 </Window>
